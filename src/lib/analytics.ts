@@ -21,6 +21,7 @@ export type AnalyticsEvent =
   | 'product_compared'
   | 'add_to_cart'
   | 'checkout_started'
+  | 'payment_started'
   | 'purchase_completed'
   | 'support_requested';
 

@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "stripe:sync": "node scripts/sync-stripe.mjs"
   },
   "dependencies": {
     "next": "^15.5.23",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "stripe": "^22.5.0"
   },
   "devDependencies": {
     "@types/node": "20.14.10",

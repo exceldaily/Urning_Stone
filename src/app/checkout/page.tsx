@@ -10,12 +10,15 @@ import { track } from '@/lib/analytics';
 /**
  * CHECKOUT
  * -------------------------------------------------------------------------
- * A complete, validated front end with no payment processor attached.
+ * Collects delivery details, then hands off to Stripe Checkout for payment.
  *
- * >> TO GO LIVE: submit the collected values to your payment provider
- *    (Stripe, Shopify, etc.) from a server route. Never place secret keys in
- *    client code, and never handle raw card numbers yourself — mount the
- *    provider's hosted fields where the payment panel is marked below.
+ * No card details are ever entered on this site. The basket is posted to
+ * /api/checkout, which rebuilds every line from the server-side catalogue
+ * (so the amount charged cannot be altered from the browser) and returns a
+ * Stripe-hosted URL to redirect to.
+ *
+ * Without STRIPE_SECRET_KEY the route replies 503 and the page says plainly
+ * that payments are not connected yet, rather than faking a completed order.
  */
 
 type Fields = { email: string; name: string; address1: string; city: string; postcode: string; country: string; phone: string };
@@ -28,6 +31,7 @@ export default function CheckoutPage() {
   const [fields, setFields] = useState<Fields>(emptyFields);
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   useEffect(() => { if (hydrated && lines.length) track('checkout_started', { value: subtotalCents / 100 }); }, [hydrated, lines.length, subtotalCents]);
 
@@ -42,7 +46,7 @@ export default function CheckoutPage() {
     return Object.keys(next).length === 0;
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) {
       const first = document.querySelector('[aria-invalid="true"]') as HTMLElement | null;
@@ -50,9 +54,42 @@ export default function CheckoutPage() {
       return;
     }
     setSubmitting(true);
-    // TODO: replace with a real payment intent + order creation call.
-    track('purchase_completed', { value: subtotalCents / 100, items: lines.length });
-    setTimeout(() => { clearCart(); router.push('/checkout/confirmation'); }, 600);
+    setPaymentError(null);
+    track('payment_started', { value: subtotalCents / 100, items: lines.length });
+
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: fields.email,
+          // Ids and quantities only — the server prices the basket.
+          lines: lines.map((l) => ({
+            productId: l.productId,
+            quantity: l.quantity,
+            personalization: l.personalization,
+          })),
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.url) {
+        setPaymentError(
+          data?.message ?? 'We could not start the payment. Nothing has been charged — please try again.',
+        );
+        setSubmitting(false);
+        return;
+      }
+
+      // Stripe's hosted page takes it from here. The basket is deliberately
+      // NOT cleared yet — that happens on the confirmation page, so a
+      // cancelled payment returns the customer to an intact basket.
+      window.location.href = data.url as string;
+    } catch {
+      setPaymentError('We could not reach the payment provider. Nothing has been charged.');
+      setSubmitting(false);
+    }
   };
 
   if (!hydrated) return <div className="shell section"><div className="skeleton h-72 w-full" /></div>;
@@ -129,7 +166,7 @@ export default function CheckoutPage() {
           <section>
             <h2 className="font-display text-xl">Payment</h2>
             <div className="pending mt-3 text-[0.88rem] text-ink2">
-              The payment provider&apos;s secure card fields mount here. Card details are never handled by this site directly.
+              Payment is taken on Stripe&apos;s secure hosted page. Selecting continue takes you there; card details are never entered on, or seen by, this site.
             </div>
           </section>
 

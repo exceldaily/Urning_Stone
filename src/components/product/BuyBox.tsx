@@ -12,7 +12,8 @@ import { track } from '@/lib/analytics';
 const emptyPersonalization: Personalization = { font: 'serif', motif: 'none', confirmed: false };
 
 export function BuyBox({ product }: { product: Product }) {
-  const { price } = useCurrency();
+  const { price, isBase } = useCurrency();
+  const baseFormatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.priceCents / 100);
   const router = useRouter();
   const { addToCart, saved, toggleSaved, markViewed } = useStore();
   const [wantsEngraving, setWantsEngraving] = useState(false);
@@ -44,13 +45,24 @@ export function BuyBox({ product }: { product: Product }) {
     <div className="space-y-6">
       <div>
         <p className="text-2xl tabular-nums">{price(product.priceCents)}</p>
+        {!isBase && (
+          <p className="mt-1 text-[0.82rem] text-ink2">
+            Converted from {baseFormatted} — your card is charged in US dollars.
+          </p>
+        )}
+        {!product.costVerified && (
+          <p className="pending mt-3 text-[0.85rem]">
+            Indicative price. This piece is awaiting a confirmed supplier quote, so the
+            figure above may change before it can be ordered.
+          </p>
+        )}
         {!product.inStock && <p className="mt-1 text-[0.88rem] text-bronze-deep">Currently unavailable. {product.stockNote}</p>}
       </div>
 
       <CapacityScale capacity={product.capacityCuIn} size="lg" showTicks label="Interior capacity" />
       <p className="text-[0.85rem] leading-relaxed text-ink2">
         {product.suitableUpToLb
-          ? `Generally suitable for a person of up to about ${product.suitableUpToLb} lb, using the usual one cubic inch per pound estimate.`
+          ? `Generally suitable for a pet of up to about ${product.suitableUpToLb} lb, using the usual one cubic inch per pound estimate.`
           : 'Holds a small portion of ashes rather than the full amount.'}{' '}
         <Link href="/size-guide" className="link-underline" onClick={() => track('size_guide_opened', { from: 'pdp' })}>How capacity works</Link>
       </p>
