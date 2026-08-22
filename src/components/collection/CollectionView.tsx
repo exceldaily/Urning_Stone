@@ -14,7 +14,8 @@ import { categoryLabels, materialLabels } from '@/data/finder';
 import { GridSkeleton } from '@/components/ui/Skeleton';
 
 const colorLabels: Record<string, string> = {
-  natural: 'Natural', cream: 'Cream', sage: 'Sage', charcoal: 'Charcoal', bronze: 'Bronze', stone: 'Stone', rose: 'Dusty rose',
+  natural: 'Natural', cream: 'Cream', sage: 'Sage', charcoal: 'Charcoal', bronze: 'Bronze',
+  stone: 'Stone', rose: 'Dusty rose', pink: 'Rosewater', white: 'White', steel: 'Steel',
 };
 
 function uniq<T>(items: T[]) { return Array.from(new Set(items)); }
