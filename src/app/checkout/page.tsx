@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
-import { formatPrice } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { UrnImage } from '@/components/product/UrnImage';
 import { track } from '@/lib/analytics';
 
@@ -22,6 +22,7 @@ type Fields = { email: string; name: string; address1: string; city: string; pos
 const emptyFields: Fields = { email: '', name: '', address1: '', city: '', postcode: '', country: 'United States', phone: '' };
 
 export default function CheckoutPage() {
+  const { price } = useCurrency();
   const router = useRouter();
   const { lines, lineProduct, subtotalCents, hydrated, clearCart } = useStore();
   const [fields, setFields] = useState<Fields>(emptyFields);
@@ -154,13 +155,13 @@ export default function CheckoutPage() {
                       <p>{p.name} <span className="text-muted">× {line.quantity}</span></p>
                       {line.personalization?.name && <p className="mt-1 text-[0.8rem] text-muted">Engraved: {line.personalization.name}</p>}
                     </div>
-                    <span className="tabular-nums text-[0.88rem]">{formatPrice(p.priceCents * line.quantity)}</span>
+                    <span className="tabular-nums text-[0.88rem]">{price(p.priceCents * line.quantity)}</span>
                   </li>
                 );
               })}
             </ul>
             <dl className="mt-4 space-y-2 border-t border-hairline pt-4 text-[0.92rem]">
-              <div className="flex justify-between"><dt>Subtotal</dt><dd className="tabular-nums">{formatPrice(subtotalCents)}</dd></div>
+              <div className="flex justify-between"><dt>Subtotal</dt><dd className="tabular-nums">{price(subtotalCents)}</dd></div>
               <div className="flex justify-between"><dt>Delivery</dt><dd className="text-muted">To be confirmed</dd></div>
             </dl>
           </div>

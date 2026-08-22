@@ -7,7 +7,8 @@ import { products as allProducts } from '@/data/products';
 import { applyFilters, capacityBuckets, countActive, emptyFilters, sortLabels, type FilterState, type SortKey } from '@/lib/filters';
 import { ProductCard } from '@/components/product/ProductCard';
 import { useStore } from '@/components/store/StoreProvider';
-import { formatDimensions, formatPrice } from '@/lib/format';
+import { formatDimensions } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { CapacityScale } from '@/components/ui/CapacityScale';
 import { categoryLabels, materialLabels } from '@/data/finder';
 import { GridSkeleton } from '@/components/ui/Skeleton';
@@ -44,6 +45,7 @@ function CheckList({ legend, options, selected, onToggle }: { legend: string; op
 }
 
 export function CollectionView({ pool }: { pool: Product[] }) {
+  const { price } = useCurrency();
   const params = useSearchParams();
   const initialQ = params.get('q') ?? '';
   const [filters, setFilters] = useState<FilterState>({ ...emptyFilters, q: initialQ });
@@ -83,7 +85,7 @@ export function CollectionView({ pool }: { pool: Product[] }) {
       <fieldset className="border-t border-hairline py-5">
         <legend className="eyebrow">Price</legend>
         <label htmlFor="c-price" className="mt-3 block text-[0.85rem] text-ink2">
-          Up to <span className="tabular-nums">{filters.maxPrice === null ? 'any amount' : formatPrice(filters.maxPrice * 100)}</span>
+          Up to <span className="tabular-nums">{filters.maxPrice === null ? 'any amount' : price(filters.maxPrice * 100)}</span>
         </label>
         <input
           id="c-price" type="range" min={50} max={700} step={25}
@@ -152,7 +154,7 @@ export function CollectionView({ pool }: { pool: Product[] }) {
             {filters.capacities.map((v) => <Chip key={v} label={capacityBuckets.find((b) => b.id === v)?.label ?? v} onRemove={() => toggle('capacities')(v)} />)}
             {filters.personalizedOnly && <Chip label="Can be engraved" onRemove={() => setFilters((f) => ({ ...f, personalizedOnly: false }))} />}
             {filters.inStockOnly && <Chip label="Available now" onRemove={() => setFilters((f) => ({ ...f, inStockOnly: false }))} />}
-            {filters.maxPrice !== null && <Chip label={`Up to ${formatPrice(filters.maxPrice * 100)}`} onRemove={() => setFilters((f) => ({ ...f, maxPrice: null }))} />}
+            {filters.maxPrice !== null && <Chip label={`Up to ${price(filters.maxPrice * 100)}`} onRemove={() => setFilters((f) => ({ ...f, maxPrice: null }))} />}
           </div>
         )}
 
@@ -209,7 +211,7 @@ export function CollectionView({ pool }: { pool: Product[] }) {
                     <button type="button" onClick={() => toggleCompare(p.id)} className="text-muted hover:text-ink" aria-label={`Remove ${p.name} from comparison`}><span aria-hidden>×</span></button>
                   </div>
                   <dl className="mt-2 space-y-1 text-[0.78rem] text-ink2">
-                    <div className="flex justify-between"><dt className="text-muted">Price</dt><dd className="tabular-nums">{formatPrice(p.priceCents)}</dd></div>
+                    <div className="flex justify-between"><dt className="text-muted">Price</dt><dd className="tabular-nums">{price(p.priceCents)}</dd></div>
                     <div className="flex justify-between"><dt className="text-muted">Material</dt><dd>{materialLabels[p.material]}</dd></div>
                     <div className="flex justify-between"><dt className="text-muted">Size</dt><dd className="tabular-nums">{formatDimensions(p.dimensions)}</dd></div>
                     <div className="flex justify-between"><dt className="text-muted">Engraving</dt><dd>{p.personalization.available ? 'Yes' : 'No'}</dd></div>

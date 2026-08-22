@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { Product } from '@/data/products';
 import { categoryLabels } from '@/data/finder';
-import { formatPrice } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { useStore } from '@/components/store/StoreProvider';
 import { CapacityScale } from '@/components/ui/CapacityScale';
 import { UrnImage } from './UrnImage';
 import { QuickView } from './QuickView';
 
 export function ProductCard({ product, view = 'grid', showCompare = true }: { product: Product; view?: 'grid' | 'list'; showCompare?: boolean }) {
+  const { price } = useCurrency();
   const { saved, toggleSaved, compare, toggleCompare } = useStore();
   const [quickView, setQuickView] = useState(false);
   const isSaved = saved.includes(product.id);
@@ -27,7 +28,7 @@ export function ProductCard({ product, view = 'grid', showCompare = true }: { pr
       </h3>
       <div className="mt-3"><CapacityScale capacity={product.capacityCuIn} /></div>
       <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.85rem] text-ink2">
-        <span className="tabular-nums text-ink">{formatPrice(product.priceCents)}</span>
+        <span className="tabular-nums text-ink">{price(product.priceCents)}</span>
         {product.personalization.available && <span className="text-muted">· Engraving available</span>}
         {!product.inStock && <span className="text-bronze-deep">· Currently unavailable</span>}
       </div>

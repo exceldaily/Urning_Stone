@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { site } from '@/data/site';
 import { StoreProvider } from '@/components/store/StoreProvider';
+import { CurrencyProvider } from '@/components/store/CurrencyProvider';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -42,12 +43,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <StoreProvider>
+          <CurrencyProvider>
           <AnnouncementBar />
           <Header />
           <main id="main">{children}</main>
           <Footer />
           <CartDrawer />
           <ConsentBar />
+          </CurrencyProvider>
         </StoreProvider>
       </body>
     </html>

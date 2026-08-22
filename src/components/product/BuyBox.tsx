@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Product } from '@/data/products';
-import { formatPrice } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { useStore, type Personalization } from '@/components/store/StoreProvider';
 import { PersonalizationForm, personalizationErrors } from './PersonalizationForm';
 import { CapacityScale } from '@/components/ui/CapacityScale';
@@ -12,6 +12,7 @@ import { track } from '@/lib/analytics';
 const emptyPersonalization: Personalization = { font: 'serif', motif: 'none', confirmed: false };
 
 export function BuyBox({ product }: { product: Product }) {
+  const { price } = useCurrency();
   const router = useRouter();
   const { addToCart, saved, toggleSaved, markViewed } = useStore();
   const [wantsEngraving, setWantsEngraving] = useState(false);
@@ -42,7 +43,7 @@ export function BuyBox({ product }: { product: Product }) {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-2xl tabular-nums">{formatPrice(product.priceCents)}</p>
+        <p className="text-2xl tabular-nums">{price(product.priceCents)}</p>
         {!product.inStock && <p className="mt-1 text-[0.88rem] text-bronze-deep">Currently unavailable. {product.stockNote}</p>}
       </div>
 
@@ -115,6 +116,7 @@ export function BuyBox({ product }: { product: Product }) {
 
 /** Calm sticky bar for small screens. Appears only after the main buy area scrolls away. */
 export function StickyBuyBar({ product }: { product: Product }) {
+  const { price } = useCurrency();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 620);
@@ -130,7 +132,7 @@ export function StickyBuyBar({ product }: { product: Product }) {
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate text-[0.85rem]">{product.name}</p>
-          <p className="text-[0.8rem] tabular-nums text-ink2">{formatPrice(product.priceCents)} · {product.capacityCuIn} cu in</p>
+          <p className="text-[0.8rem] tabular-nums text-ink2">{price(product.priceCents)} · {product.capacityCuIn} cu in</p>
         </div>
         <a href="#buy" className="btn-primary px-5 py-2.5 text-[0.85rem]">Choose options</a>
       </div>

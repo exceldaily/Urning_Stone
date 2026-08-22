@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { useFocusTrap } from '@/components/ui/useFocusTrap';
 import { useStore } from '@/components/store/StoreProvider';
-import { formatPrice } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { UrnImage } from '@/components/product/UrnImage';
 
 export function CartDrawer() {
+  const { price } = useCurrency();
   const { cartOpen, setCartOpen, lines, lineProduct, subtotalCents, removeLine, setQuantity } = useStore();
   const panel = useRef<HTMLDivElement>(null);
   useFocusTrap(panel, cartOpen);
@@ -70,7 +71,7 @@ export function CartDrawer() {
                           <span className="w-6 text-center text-[0.85rem] tabular-nums">{line.quantity}</span>
                           <button type="button" onClick={() => setQuantity(line.lineId, line.quantity + 1)} className="h-9 w-9 text-ink2" aria-label={`Increase quantity of ${p.name}`}>+</button>
                         </div>
-                        <span className="text-[0.9rem] tabular-nums">{formatPrice(p.priceCents * line.quantity)}</span>
+                        <span className="text-[0.9rem] tabular-nums">{price(p.priceCents * line.quantity)}</span>
                       </div>
                       <button type="button" onClick={() => removeLine(line.lineId)} className="mt-2 text-[0.78rem] text-muted underline underline-offset-2 hover:text-ink">Remove</button>
                     </div>
@@ -80,7 +81,7 @@ export function CartDrawer() {
             </ul>
             <div className="shrink-0 space-y-3 border-t border-hairline p-5">
               <div className="flex justify-between text-[0.95rem]">
-                <span>Subtotal</span><span className="tabular-nums">{formatPrice(subtotalCents)}</span>
+                <span>Subtotal</span><span className="tabular-nums">{price(subtotalCents)}</span>
               </div>
               {/* TODO: replace with real shipping rates once carriers are configured. */}
               <p className="text-[0.8rem] text-muted">Delivery and any taxes are calculated at checkout.</p>

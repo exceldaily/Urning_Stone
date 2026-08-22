@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { primaryNav, site } from '@/data/site';
 import { useStore } from '@/components/store/StoreProvider';
+import { CurrencySwitcher } from '@/components/layout/CurrencySwitcher';
 
 function Wordmark() {
   return (
@@ -93,6 +94,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <div className="hidden sm:block"><CurrencySwitcher /></div>
           <button type="button" onClick={() => setSearch(true)} className="flex h-12 w-12 items-center justify-center rounded-full text-ink2 hover:text-ink" aria-label="Search">
             <svg aria-hidden viewBox="0 0 20 20" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5">
               <circle cx="9" cy="9" r="6" /><path d="m13.5 13.5 4 4" strokeLinecap="round" />

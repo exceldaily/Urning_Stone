@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { useStore, type Personalization } from '@/components/store/StoreProvider';
 import { UrnImage } from '@/components/product/UrnImage';
 import { PersonalizationForm } from '@/components/product/PersonalizationForm';
-import { formatPrice } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { Accordion } from '@/components/ui/Accordion';
 import { faqs } from '@/data/faqs';
 
 export default function CartPage() {
+  const { price } = useCurrency();
   const { lines, lineProduct, subtotalCents, setQuantity, removeLine, updatePersonalization, hydrated } = useStore();
   const [editing, setEditing] = useState<string | null>(null);
   const [promo, setPromo] = useState('');
@@ -48,7 +49,7 @@ export default function CartPage() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-baseline justify-between gap-3">
                         <Link href={`/products/${p.slug}`} className="font-display text-xl hover:text-bronze-deep">{p.name}</Link>
-                        <span className="tabular-nums">{formatPrice(p.priceCents * line.quantity)}</span>
+                        <span className="tabular-nums">{price(p.priceCents * line.quantity)}</span>
                       </div>
                       <p className="mt-1 text-[0.85rem] text-muted">{p.materialLabel} · {p.capacityCuIn} cu in · {p.sku}</p>
 
@@ -94,7 +95,7 @@ export default function CartPage() {
             <div className="rounded-[1.1rem] border border-hairline bg-cream p-6">
               <h2 className="font-display text-xl">Summary</h2>
               <dl className="mt-4 space-y-2 text-[0.92rem]">
-                <div className="flex justify-between"><dt>Subtotal</dt><dd className="tabular-nums">{formatPrice(subtotalCents)}</dd></div>
+                <div className="flex justify-between"><dt>Subtotal</dt><dd className="tabular-nums">{price(subtotalCents)}</dd></div>
                 {/* TODO: replace with live rates from the shipping provider. */}
                 <div className="flex justify-between"><dt>Delivery</dt><dd className="text-muted">Calculated at checkout</dd></div>
                 <div className="flex justify-between"><dt>Taxes</dt><dd className="text-muted">Calculated at checkout</dd></div>

@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { useFocusTrap } from '@/components/ui/useFocusTrap';
 import type { Product } from '@/data/products';
-import { formatDimensions, formatPrice } from '@/lib/format';
+import { formatDimensions } from '@/lib/format';
+import { useCurrency } from '@/components/store/CurrencyProvider';
 import { useStore } from '@/components/store/StoreProvider';
 import { CapacityScale } from '@/components/ui/CapacityScale';
 import { UrnImage } from './UrnImage';
 
 export function QuickView({ product, onClose }: { product: Product; onClose: () => void }) {
+  const { price } = useCurrency();
   const { addToCart } = useStore();
   const panel = useRef<HTMLDivElement>(null);
 
@@ -51,7 +53,7 @@ export function QuickView({ product, onClose }: { product: Product; onClose: () 
               </div>
             </dl>
             <div className="mt-5"><CapacityScale capacity={product.capacityCuIn} size="lg" label="Interior capacity" /></div>
-            <p className="mt-5 text-lg tabular-nums">{formatPrice(product.priceCents)}</p>
+            <p className="mt-5 text-lg tabular-nums">{price(product.priceCents)}</p>
             <div className="mt-4 flex flex-wrap gap-3">
               {product.personalization.available ? (
                 <Link href={`/products/${product.slug}`} className="btn-primary">Choose engraving</Link>
