@@ -6,7 +6,7 @@ import { track } from '@/lib/analytics';
 
 /** Character limits reflect what fits on the piece, not an arbitrary cap. */
 export const LIMITS: Record<PersonalizationFieldId, number> = {
-  name: 30, dates: 24, inscription: 80, motif: 0, photo: 0,
+  name: 30, dates: 24, inscription: 80, motif: 0, photo: 0, pawprint: 0,
 };
 
 export const FONTS = [
@@ -16,8 +16,9 @@ export const FONTS = [
 
 export const MOTIFS = [
   { id: 'none', label: 'No motif' },
+  { id: 'paw', label: 'Paw print' },
+  { id: 'heart', label: 'Small heart' },
   { id: 'leaf', label: 'Single leaf' },
-  { id: 'wave', label: 'Wave line' },
   { id: 'star', label: 'Small star' },
   // TODO: replace with the real motif library once artwork is supplied.
 ];
