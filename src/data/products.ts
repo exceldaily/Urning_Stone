@@ -28,6 +28,7 @@
  * written permission, or shoot your own, before populating these arrays.
  */
 import { retailCents } from './pricing';
+import { supplierCosts } from './supplierCosts';
 
 export type CategoryId = 'urn' | 'keepsake' | 'jewelry';
 export type PetId = 'dog' | 'cat' | 'small';
@@ -329,8 +330,21 @@ const catalogue: ProductInput[] = [
   },
 ];
 
-/** Retail price applied here, once, from the single markup constant. */
-export const products: Product[] = catalogue.map((p) => ({ ...p, priceCents: retailCents(p.costCents) }));
+/**
+ * Real supplier costs (from catalogue.csv via `npm run catalogue:import`)
+ * override the placeholders above, and retail is derived from whichever
+ * cost is in force.
+ */
+export const products: Product[] = catalogue.map((p) => {
+  const quoted = supplierCosts[p.sku];
+  const costCents = quoted?.costCents ?? p.costCents;
+  return {
+    ...p,
+    costCents,
+    costVerified: quoted?.verified ?? p.costVerified,
+    priceCents: retailCents(costCents),
+  };
+});
 
 /** True while any product still carries a placeholder supplier cost. */
 export const hasUnverifiedPricing = products.some((p) => !p.costVerified);

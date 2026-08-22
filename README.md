@@ -57,8 +57,22 @@ structured data, and Stripe.
 > price" notice on their page, and `scripts/sync-stripe.mjs` refuses to run
 > against a live Stripe key while any remain.
 >
-> **To go live:** put the real landed unit cost into `costCents` and set
-> `costVerified: true`.
+> **To go live:** fill in the costs. There is a spreadsheet workflow for this:
+>
+> ```bash
+> npm run catalogue:template          # writes catalogue.csv, one row per product
+> # fill in the cost_usd column, set verified to yes on real quotes
+> npm run catalogue:import            # dry run — shows cost, derived retail, warnings
+> npm run catalogue:import -- --apply # writes src/data/supplierCosts.ts
+> ```
+>
+> Costs land in `src/data/supplierCosts.ts` (generated, keyed by SKU) and
+> override the placeholders in `products.ts`. Products you have not quoted yet
+> keep their placeholder and their notice, so you can do this a few at a time.
+>
+> Corrected capacities or dimensions in the CSV are **reported, not applied** —
+> those are authored content, and silently rewriting a catalogue from a
+> spreadsheet is how catalogues rot. Edit `products.ts` for those.
 
 ## Currency
 

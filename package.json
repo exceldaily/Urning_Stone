@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "stripe:sync": "node scripts/sync-stripe.mjs"
+    "stripe:sync": "node scripts/sync-stripe.mjs",
+    "catalogue:template": "node scripts/catalogue-template.mjs",
+    "catalogue:import": "node scripts/import-catalogue.mjs"
   },
   "dependencies": {
     "next": "^15.5.23",
