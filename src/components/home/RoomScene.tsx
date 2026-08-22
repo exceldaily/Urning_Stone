@@ -2,8 +2,12 @@
  * PLACEHOLDER HERO / LIFESTYLE ART
  * -------------------------------------------------------------------------
  * A drawn interior standing in for photography: daylight from a window, a
- * console table, books, and an urn resting among them. No people, no cemetery
- * or religious imagery.
+ * console table, books, an urn resting among them, a collar set down beside
+ * it, and a pet asleep in the pool of light on the floor.
+ *
+ * The sleeping animal is deliberate. This is a memorial store, but the thing
+ * people want to remember is the animal warm and asleep in the sun, not the
+ * loss. No cemetery or religious imagery, and no people.
  *
  * >> REPLACE WITH PHOTOGRAPHY: drop a photograph at /public/hero.jpg and swap
  *    this component for next/image. Nothing else depends on it.
@@ -20,7 +24,9 @@ const palettes: Record<Tone, { wallTop: string; wallBottom: string; outside: str
   evening:   { wallTop: '#FAF1E1', wallBottom: '#EBE3D5', outside: '#EDEAE0', wood: '#9C7F58', woodDark: '#7A6141', vessel: '#C2A276', vesselDark: '#8E713F', accent: '#84947C', floor: '#DED2BE' },
 };
 
-export function RoomScene({ tone = 'morning', className = '', label }: { tone?: Tone; className?: string; label?: string }) {
+type Pet = 'dog' | 'cat' | 'none';
+
+export function RoomScene({ tone = 'morning', pet = 'dog', className = '', label }: { tone?: Tone; pet?: Pet; className?: string; label?: string }) {
   const p = palettes[tone];
   const id = `room-${tone}`;
 
@@ -28,7 +34,7 @@ export function RoomScene({ tone = 'morning', className = '', label }: { tone?: 
     <svg
       viewBox="0 0 640 460"
       role="img"
-      aria-label={label ?? 'An illustrated corner of a room: daylight through a window, a console table with books and a small sprig, and a memorial urn resting among them. Photography to follow.'}
+      aria-label={label ?? `An illustrated corner of a room: daylight through a window, a console table with books and a small sprig, a memorial urn and a collar resting among them${pet === 'none' ? '' : `, and a ${pet} asleep in the light on the floor`}. Photography to follow.`}
       className={`h-full w-full ${className}`}
     >
       <defs>
@@ -119,6 +125,74 @@ export function RoomScene({ tone = 'morning', className = '', label }: { tone?: 
         {/* Soft vertical sheen */}
         <ellipse cx="433" cy="270" rx="11" ry="38" fill="#FFFFFF" opacity="0.16" />
       </g>
+
+      {/* A collar and its tag, set down beside the urn */}
+      <g>
+        <path d="M488 320 q20 -9 40 -2 q-19 9 -40 2 Z" fill={p.accent} opacity="0.8" />
+        <path d="M488 320 q20 -9 40 -2" fill="none" stroke={p.woodDark} strokeWidth="1.2" opacity="0.45" />
+        <circle cx="508" cy="325" r="5.5" fill={p.vessel} stroke={p.vesselDark} strokeWidth="1.1" />
+      </g>
+
+      {/* A rug, and someone asleep in the window light */}
+      {pet !== 'none' && (
+        <g>
+          <ellipse cx="152" cy="426" rx="126" ry="15" fill={p.accent} opacity="0.20" />
+          <ellipse cx="152" cy="426" rx="99" ry="10" fill={p.accent} opacity="0.14" />
+
+          {/* Tail, sweeping round the front to meet the nose */}
+          <path
+            d="M206 418 q34 8 40 -14 q6 -22 -16 -28"
+            fill="none" stroke={p.wood} strokeWidth="15" strokeLinecap="round"
+          />
+          <path
+            d="M206 418 q34 8 40 -14 q6 -22 -16 -28"
+            fill="none" stroke={p.woodDark} strokeWidth="15" strokeLinecap="round" opacity="0.18"
+          />
+
+          {/* Haunch, the high point of a curled-up animal */}
+          <circle cx="196" cy="392" r="36" fill={p.wood} />
+          <circle cx="196" cy="386" r="36" fill={p.woodDark} opacity="0.14" />
+
+          {/* Body */}
+          <ellipse cx="150" cy="400" rx="66" ry="28" fill={p.wood} />
+          <path d="M84 400 q66 -34 132 -6 q-66 -14 -132 6 Z" fill={p.woodDark} opacity="0.13" />
+
+          {/* Front legs, stretched out with the head resting on them */}
+          <path d="M74 420 h56 a9 9 0 0 1 0 12 h-56 a9 9 0 0 1 0 -12 Z" fill={p.wood} />
+          <path d="M74 420 h56 a9 9 0 0 1 0 12 h-56 a9 9 0 0 1 0 -12 Z" fill={p.woodDark} opacity="0.10" />
+          <path d="M92 424 v8 M110 424 v8" stroke={p.woodDark} strokeWidth="1.6" strokeLinecap="round" opacity="0.3" />
+
+          {/* Head, resting down on the paws */}
+          <circle cx="86" cy="398" r="29" fill={p.wood} />
+          <circle cx="86" cy="394" r="29" fill={p.woodDark} opacity="0.07" />
+
+          {/* Muzzle */}
+          <ellipse cx="62" cy="408" rx="17" ry="12" fill={p.wood} />
+          <ellipse cx="62" cy="406" rx="17" ry="12" fill="#FFFFFF" opacity="0.16" />
+          <circle cx="49" cy="405" r="4" fill={p.woodDark} opacity="0.75" />
+
+          {/* Ear */}
+          {pet === 'dog' ? (
+            <path d="M96 374 q22 -4 24 22 q2 26 -20 24 q-10 -22 -4 -46 Z" fill={p.woodDark} opacity="0.45" />
+          ) : (
+            <>
+              <path d="M92 372 l-2 -26 l24 15 Z" fill={p.wood} />
+              <path d="M92 372 l-2 -26 l24 15 Z" fill={p.woodDark} opacity="0.35" />
+              <path d="M118 378 l14 -22 l6 24 Z" fill={p.wood} />
+              <path d="M118 378 l14 -22 l6 24 Z" fill={p.woodDark} opacity="0.35" />
+            </>
+          )}
+
+          {/* Closed eye — the whole point of the drawing */}
+          <path d="M72 392 q9 6 18 0" fill="none" stroke={p.woodDark} strokeWidth="2.6" strokeLinecap="round" opacity="0.8" />
+
+          {pet === 'cat' && (
+            <g stroke={p.woodDark} strokeWidth="1.3" strokeLinecap="round" opacity="0.35">
+              <path d="M48 412 q-16 4 -22 10 M48 409 q-17 -1 -24 -6" fill="none" />
+            </g>
+          )}
+        </g>
+      )}
 
       {/* Floor */}
       <path d="M0 429 H640" stroke="#D9CFBE" strokeWidth="2" opacity="0.8" />

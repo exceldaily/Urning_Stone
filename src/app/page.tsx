@@ -14,8 +14,8 @@ import { CapacityScale } from '@/components/ui/CapacityScale';
 import { formatDate } from '@/lib/format';
 
 export const metadata: Metadata = {
-  title: 'A beautiful resting place for a life deeply loved',
-  description: 'Memorial urns and keepsakes chosen for meaning, quality and how they sit in a family home. Clear capacity guidance, optional engraving, and help whenever you want it.',
+  title: 'Somewhere lovely for a friend who was family',
+  description: 'Urns and keepsakes for dogs, cats and small pets. Clear size guidance based on their weight, optional engraving, and someone to talk to whenever you want.',
   alternates: { canonical: '/' },
 };
 
@@ -38,11 +38,11 @@ export default function HomePage() {
           <div className="max-w-xl">
             <span className="rule-bronze" aria-hidden />
             <h1 className="mt-6 font-display text-[2.4rem] leading-[1.08] sm:text-[3.1rem]">
-              A beautiful resting place for a life deeply loved.
+              Somewhere lovely for a friend who was family.
             </h1>
             <p className="mt-5 text-[1.05rem] leading-relaxed text-ink2">
-              Thoughtfully chosen memorial urns and keepsakes, designed to preserve a meaningful connection
-              and to feel at home in the places you shared.
+              Urns and keepsakes for dogs, cats and small pets — chosen to hold them safely, and to look
+              like they belong in the room where they slept.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/urn-finder" className="btn-primary">Find the right urn</Link>
@@ -109,7 +109,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="eyebrow">A place to begin</p>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Pieces families return to</h2>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Pieces families come back to</h2>
               </div>
               <Link href="/collections/memorial-urns-for-ashes" className="btn-secondary">See everything</Link>
             </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
         <div className="shell grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="eyebrow">Made for the home you shared</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl">Somewhere it can simply belong.</h2>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl">In the room where they slept.</h2>
             <div className="prose-calm mt-5 max-w-xl">
               <p>
                 A memorial piece does not have to sit apart from everything else. On a shelf among the books they
@@ -143,8 +143,8 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={100}>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[1.1rem] border border-hairline bg-cream sm:col-span-2"><RoomScene tone="afternoon" label="An illustrated living room with afternoon light, a shelf and a memorial urn among books. Photography to follow." /></div>
-              <div className="overflow-hidden rounded-[1.1rem] border border-hairline bg-cream"><RoomScene tone="evening" label="An illustrated interior in evening light with a memorial urn on a shelf. Photography to follow." /></div>
+              <div className="overflow-hidden rounded-[1.1rem] border border-hairline bg-cream sm:col-span-2"><RoomScene tone="afternoon" pet="cat" label="An illustrated living room with afternoon light, a shelf with a memorial urn among books, and a cat asleep on the rug. Photography to follow." /></div>
+              <div className="overflow-hidden rounded-[1.1rem] border border-hairline bg-cream"><RoomScene tone="evening" pet="none" label="An illustrated interior in evening light with a memorial urn and a collar resting on a shelf. Photography to follow." /></div>
               <div className="flex flex-col justify-center rounded-[1.1rem] border border-hairline bg-cream p-6">
                 <p className="font-display text-xl">Sized before you order</p>
                 <p className="mt-2 text-[0.9rem] leading-relaxed text-ink2">Every product page lists exterior height, width and depth, so you can measure the space first.</p>
@@ -154,12 +154,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Personalization */}
+      {/* 8. Personalisation */}
       <section className="section border-b border-hairline">
         <div className="shell grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Reveal>
-            <p className="eyebrow">Personalization</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl">A personal expression of remembrance.</h2>
+            <p className="eyebrow">Personalisation</p>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl">Their name, in your handwriting or ours.</h2>
             <p className="mt-5 max-w-md text-[1rem] leading-relaxed text-ink2">
               Engraving is optional, and plain is not a failure of effort. If you would like words on a piece,
               here is what can usually be added. Availability differs by material, and each product page shows
@@ -185,8 +185,8 @@ export default function HomePage() {
         <div className="shell">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="eyebrow">Urn size guide</p>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl">How much space is needed?</h2>
+              <p className="eyebrow">Size guide</p>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl">What size will you need?</h2>
               <p className="mt-4 text-[1rem] leading-relaxed text-ink2">{CAPACITY_RULE} So a person of around 170 lb is usually well served by an urn of 170 to 200 cubic inches.</p>
             </div>
           </Reveal>
@@ -233,7 +233,7 @@ export default function HomePage() {
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">Customer stories</p>
+                <p className="eyebrow">In their words</p>
                 <h2 className="mt-3 font-display text-3xl">In their words</h2>
               </div>
               {/* Disappears on its own once verified reviews are connected. */}

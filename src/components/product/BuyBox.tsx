@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Product } from '@/data/products';
 import { useCurrency } from '@/components/store/CurrencyProvider';
-import { useStore, type Personalization } from '@/components/store/StoreProvider';
-import { PersonalizationForm, personalizationErrors } from './PersonalizationForm';
+import { useStore, type Personalisation } from '@/components/store/StoreProvider';
+import { PersonalisationForm, personalisationErrors } from './PersonalisationForm';
 import { CapacityScale } from '@/components/ui/CapacityScale';
 import { track } from '@/lib/analytics';
 
-const emptyPersonalization: Personalization = { font: 'serif', motif: 'none', confirmed: false };
+const emptyPersonalisation: Personalisation = { font: 'serif', motif: 'none', confirmed: false };
 
 export function BuyBox({ product }: { product: Product }) {
   const { price, isBase } = useCurrency();
@@ -17,7 +17,7 @@ export function BuyBox({ product }: { product: Product }) {
   const router = useRouter();
   const { addToCart, saved, toggleSaved, markViewed } = useStore();
   const [wantsEngraving, setWantsEngraving] = useState(false);
-  const [personalization, setPersonalization] = useState<Personalization>(emptyPersonalization);
+  const [personalization, setPersonalisation] = useState<Personalisation>(emptyPersonalisation);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState<string[]>([]);
   const [added, setAdded] = useState(false);
@@ -31,7 +31,7 @@ export function BuyBox({ product }: { product: Product }) {
 
   const submit = (then?: () => void) => {
     if (wantsEngraving) {
-      const found = personalizationErrors(personalization, product.personalization.fields);
+      const found = personalisationErrors(personalization, product.personalization.fields);
       setErrors(found);
       if (found.length) { document.getElementById('personalization-errors')?.focus(); return; }
     }
@@ -82,7 +82,7 @@ export function BuyBox({ product }: { product: Product }) {
           </fieldset>
           {wantsEngraving && (
             <div className="mt-5">
-              <PersonalizationForm product={product} value={personalization} onChange={setPersonalization} />
+              <PersonalisationForm product={product} value={personalization} onChange={setPersonalisation} />
               {product.personalization.finalSale === null && (
                 <p className="mt-4 text-[0.78rem] leading-relaxed text-muted">
                   {/* TODO: replace once the returns policy for engraved items is set. */}

@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { HelpPrompt } from '@/components/ui/HelpPrompt';
 
 export const metadata: Metadata = {
-  title: 'Personalization',
+  title: 'Personalisation',
   description: 'Add a name, dates, a short inscription or a simple motif to a memorial urn, with character limits, a live preview and a spelling check before ordering.',
   alternates: { canonical: '/personalization' },
 };
@@ -19,15 +19,15 @@ const options = [
   { title: 'A preview before you order', body: 'You see the wording laid out and confirm the spelling yourself before anything is added to the basket.', limit: 'Required on every engraved order.' },
 ];
 
-export default function PersonalizationPage() {
+export default function PersonalisationPage() {
   const engravable = products.filter((p) => p.personalization.available).slice(0, 3);
-  const trail = [{ name: 'Home', href: '/' }, { name: 'Personalization', href: '/personalization' }];
+  const trail = [{ name: 'Home', href: '/' }, { name: 'Personalisation', href: '/personalization' }];
 
   return (
     <div className="shell section">
       <Breadcrumbs trail={trail} />
       <header className="mt-6 max-w-2xl">
-        <h1 className="font-display text-4xl">Personalization</h1>
+        <h1 className="font-display text-4xl">Personalisation</h1>
         <p className="mt-4 text-[1.02rem] leading-relaxed text-ink2">
           Engraving makes a piece specific. It is also entirely optional — plain is not a failure of effort, and
           many families add words later rather than now.

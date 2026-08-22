@@ -12,7 +12,7 @@ import { createContext, useContext, useEffect, useMemo, useReducer, useState } f
 import { products, type Product } from '@/data/products';
 import { track } from '@/lib/analytics';
 
-export interface Personalization {
+export interface Personalisation {
   name?: string;
   dates?: string;
   inscription?: string;
@@ -25,7 +25,7 @@ export interface CartLine {
   lineId: string;
   productId: string;
   quantity: number;
-  personalization?: Personalization;
+  personalization?: Personalisation;
 }
 
 interface StoreState {
@@ -41,7 +41,7 @@ type Action =
   | { type: 'add'; line: CartLine }
   | { type: 'remove'; lineId: string }
   | { type: 'qty'; lineId: string; quantity: number }
-  | { type: 'personalize'; lineId: string; personalization: Personalization }
+  | { type: 'personalize'; lineId: string; personalization: Personalisation }
   | { type: 'clear' }
   | { type: 'toggleSaved'; id: string }
   | { type: 'toggleCompare'; id: string }
@@ -88,10 +88,10 @@ function reducer(state: StoreState, action: Action): StoreState {
 }
 
 interface StoreApi extends StoreState {
-  addToCart: (product: Product, quantity?: number, personalization?: Personalization) => void;
+  addToCart: (product: Product, quantity?: number, personalization?: Personalisation) => void;
   removeLine: (lineId: string) => void;
   setQuantity: (lineId: string, quantity: number) => void;
-  updatePersonalization: (lineId: string, p: Personalization) => void;
+  updatePersonalisation: (lineId: string, p: Personalisation) => void;
   clearCart: () => void;
   toggleSaved: (id: string) => void;
   toggleCompare: (id: string) => void;
@@ -144,7 +144,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       },
       removeLine: (lineId) => dispatch({ type: 'remove', lineId }),
       setQuantity: (lineId, quantity) => dispatch({ type: 'qty', lineId, quantity }),
-      updatePersonalization: (lineId, personalization) => dispatch({ type: 'personalize', lineId, personalization }),
+      updatePersonalisation: (lineId, personalization) => dispatch({ type: 'personalize', lineId, personalization }),
       clearCart: () => dispatch({ type: 'clear' }),
       toggleSaved: (id) => { dispatch({ type: 'toggleSaved', id }); track('product_saved', { id }); },
       toggleCompare: (id) => { dispatch({ type: 'toggleCompare', id }); track('product_compared', { id }); },

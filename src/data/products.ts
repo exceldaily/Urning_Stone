@@ -38,7 +38,7 @@ export type UrnForm =
   | 'vase' | 'cube' | 'cylinder' | 'dome' | 'seed' | 'pendant'
   | 'paw' | 'heart' | 'bone' | 'wing' | 'cat' | 'dog' | 'keychain' | 'anubis';
 
-export type PersonalizationFieldId = 'name' | 'dates' | 'inscription' | 'motif' | 'photo' | 'pawprint';
+export type PersonalisationFieldId = 'name' | 'dates' | 'inscription' | 'motif' | 'photo' | 'pawprint';
 
 export type ProductImage = { src: string; alt: string; kind: 'product' | 'detail' | 'lifestyle' };
 
@@ -73,7 +73,7 @@ interface ProductInput {
   art: { form: UrnForm; tone: ColorId };
   inStock: boolean;
   stockNote?: string;
-  personalization: { available: boolean; fields: PersonalizationFieldId[]; finalSale: boolean | null };
+  personalization: { available: boolean; fields: PersonalisationFieldId[]; finalSale: boolean | null };
   closure: string;
   care: string;
   processingTime: string;

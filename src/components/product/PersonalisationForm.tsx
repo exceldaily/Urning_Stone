@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
-import type { PersonalizationFieldId, Product } from '@/data/products';
-import type { Personalization } from '@/components/store/StoreProvider';
+import type { PersonalisationFieldId, Product } from '@/data/products';
+import type { Personalisation } from '@/components/store/StoreProvider';
 import { track } from '@/lib/analytics';
 
 /** Character limits reflect what fits on the piece, not an arbitrary cap. */
-export const LIMITS: Record<PersonalizationFieldId, number> = {
+export const LIMITS: Record<PersonalisationFieldId, number> = {
   name: 30, dates: 24, inscription: 80, motif: 0, photo: 0, pawprint: 0,
 };
 
@@ -25,11 +25,11 @@ export const MOTIFS = [
 
 interface Props {
   product: Product;
-  value: Personalization;
-  onChange: (p: Personalization) => void;
+  value: Personalisation;
+  onChange: (p: Personalisation) => void;
 }
 
-export function PersonalizationForm({ product, value, onChange }: Props) {
+export function PersonalisationForm({ product, value, onChange }: Props) {
   const fields = product.personalization.fields;
   const [started, setStarted] = useState(false);
 
@@ -38,9 +38,9 @@ export function PersonalizationForm({ product, value, onChange }: Props) {
     if (filled && !started) { setStarted(true); track('personalization_started', { sku: product.sku }); }
   }, [value, started, product.sku]);
 
-  const set = (patch: Partial<Personalization>) => onChange({ ...value, ...patch, confirmed: patch.confirmed ?? false });
+  const set = (patch: Partial<Personalisation>) => onChange({ ...value, ...patch, confirmed: patch.confirmed ?? false });
 
-  const counter = (field: PersonalizationFieldId, text: string | undefined) => {
+  const counter = (field: PersonalisationFieldId, text: string | undefined) => {
     const used = (text ?? '').length;
     const limit = LIMITS[field];
     const over = used > limit;
@@ -143,7 +143,7 @@ export function PersonalizationForm({ product, value, onChange }: Props) {
   );
 }
 
-export function personalizationErrors(p: Personalization, fields: PersonalizationFieldId[]) {
+export function personalisationErrors(p: Personalisation, fields: PersonalisationFieldId[]) {
   const errors: string[] = [];
   if (fields.includes('name') && (p.name ?? '').length > LIMITS.name) errors.push(`The name is longer than the ${LIMITS.name} characters that fit on this piece.`);
   if (fields.includes('dates') && (p.dates ?? '').length > LIMITS.dates) errors.push(`The dates are longer than the ${LIMITS.dates} characters that fit on this piece.`);

@@ -13,11 +13,11 @@ import { organizationJsonLd } from '@/lib/seo';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.brandName} — ${site.brandTagline}`, template: `%s — ${site.brandName}` },
-  description: 'Memorial urns and keepsakes chosen for meaning, quality and how they sit in a family home. Clear capacity guidance, optional engraving, and help whenever you want it.',
+  description: 'Urns and keepsakes for dogs, cats and small pets. Clear size guidance based on their weight, optional engraving, and someone to talk to whenever you want.',
   openGraph: {
     type: 'website', siteName: site.brandName, locale: site.locale, url: site.url,
     title: `${site.brandName} — ${site.brandTagline}`,
-    description: 'A beautiful resting place for a life deeply loved. Memorial urns and keepsakes, with clear guidance on size and personalization.',
+    description: 'Somewhere lovely for a friend who was family. Pet urns and keepsakes, with clear guidance on size and personalisation.',
     // TODO: add /public/og.jpg once brand photography exists.
   },
   twitter: { card: 'summary_large_image' },

@@ -46,7 +46,7 @@ export function DocPage({ page }: { page: DocPageContent }) {
             <ul className="mt-3 space-y-2 text-[0.9rem]">
               <li><Link href="/help/faq" className="link-underline">Frequently asked questions</Link></li>
               <li><Link href="/size-guide" className="link-underline">Urn size guide</Link></li>
-              <li><Link href="/help/personalization-guide" className="link-underline">Personalization guide</Link></li>
+              <li><Link href="/help/personalization-guide" className="link-underline">Personalisation guide</Link></li>
               <li><Link href="/help/shipping" className="link-underline">Shipping and delivery</Link></li>
               <li><Link href="/help/returns" className="link-underline">Returns and exchanges</Link></li>
               <li><Link href="/resources" className="link-underline">Memorial planning resources</Link></li>

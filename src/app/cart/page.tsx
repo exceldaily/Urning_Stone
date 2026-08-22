@@ -1,16 +1,16 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useStore, type Personalization } from '@/components/store/StoreProvider';
+import { useStore, type Personalisation } from '@/components/store/StoreProvider';
 import { UrnImage } from '@/components/product/UrnImage';
-import { PersonalizationForm } from '@/components/product/PersonalizationForm';
+import { PersonalisationForm } from '@/components/product/PersonalisationForm';
 import { useCurrency } from '@/components/store/CurrencyProvider';
 import { Accordion } from '@/components/ui/Accordion';
 import { faqs } from '@/data/faqs';
 
 export default function CartPage() {
   const { price } = useCurrency();
-  const { lines, lineProduct, subtotalCents, setQuantity, removeLine, updatePersonalization, hydrated } = useStore();
+  const { lines, lineProduct, subtotalCents, setQuantity, removeLine, updatePersonalisation, hydrated } = useStore();
   const [editing, setEditing] = useState<string | null>(null);
   const [promo, setPromo] = useState('');
   const [promoState, setPromoState] = useState<'idle' | 'invalid'>('idle');
@@ -66,10 +66,10 @@ export default function CartPage() {
                           </button>
                           {editing === line.lineId && (
                             <div className="mt-4">
-                              <PersonalizationForm
+                              <PersonalisationForm
                                 product={p}
                                 value={line.personalization}
-                                onChange={(v: Personalization) => updatePersonalization(line.lineId, v)}
+                                onChange={(v: Personalisation) => updatePersonalisation(line.lineId, v)}
                               />
                             </div>
                           )}

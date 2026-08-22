@@ -99,9 +99,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 },
                 { title: 'Care', content: <p>{product.care}</p> },
                 {
-                  title: 'Personalization',
+                  title: 'Personalisation',
                   content: product.personalization.available
-                    ? <p>This piece can be engraved with {product.personalization.fields.join(', ')}. Character limits are shown as you type, and you confirm the spelling before adding it to your basket. <Link href="/help/personalization-guide" className="link-underline">Read the personalization guide</Link>.</p>
+                    ? <p>This piece can be engraved with {product.personalization.fields.join(', ')}. Character limits are shown as you type, and you confirm the spelling before adding it to your basket. <Link href="/help/personalization-guide" className="link-underline">Read the personalisation guide</Link>.</p>
                     : <p>This piece is supplied plain. <Link href="/collections/personalized-urns" className="link-underline">See pieces that can be engraved</Link>.</p>,
                 },
                 {
