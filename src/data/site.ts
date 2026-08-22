@@ -14,8 +14,9 @@ export const site = {
   brandName: 'Linden & Stone',
   brandTagline: 'Memorial urns and keepsakes',
   legalEntity: 'TODO: Registered company name',
-  // TODO: replace with the production domain (used for canonical URLs + sitemap).
-  url: 'https://example.com',
+  // TODO: replace with the production domain once it is registered (used for
+  // canonical URLs + sitemap). Currently the Vercel deployment URL.
+  url: 'https://urning-stone.vercel.app',
   locale: 'en_US',
   currency: 'USD',
 
