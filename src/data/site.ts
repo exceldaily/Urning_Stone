@@ -133,6 +133,6 @@ export const trustPoints = [
   { title: 'Gentle packaging', body: 'Wrapped and boxed with care, in plain outer packaging with no branding on the outside.' },
   { title: 'Secure checkout', body: 'Card details are handled by the payment provider and never stored by us.' },
   { title: 'Checked before it ships', body: 'Every piece is inspected for finish, fit and closure before it leaves us.' },
-  { title: 'Someone to talk to', body: 'If you would rather ask a person — including how to measure — we will help you work it out.' },
+  { title: 'Someone to talk to', body: 'If you would rather ask a person — including what size they would need — we will help you work it out.' },
   { title: 'No rush, ever', body: 'Take as long as you need. Nothing here counts down at you or pretends to run out.' },
 ];

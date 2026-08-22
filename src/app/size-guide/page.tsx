@@ -93,7 +93,7 @@ export default function SizeGuidePage() {
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl">Before you order</h2>
           <ul className="mt-5 space-y-4 text-[0.95rem] leading-relaxed text-ink2">
-            <li><strong className="font-medium text-ink">Ask the crematory.</strong> Many can tell you the actual volume, which removes the guesswork entirely.</li>
+            <li><strong className="font-medium text-ink">Ask the crematorium.</strong> Many can tell you the actual volume, which removes the guesswork entirely.</li>
             <li><strong className="font-medium text-ink">Measure the space.</strong> Every product page lists exterior height, width and depth.</li>
             <li><strong className="font-medium text-ink">Check niche limits.</strong> Cemeteries and columbaria often set strict maximum dimensions.</li>
             <li><strong className="font-medium text-ink">Plan for keepsakes separately.</strong> Keepsakes hold very little, so order the main urn at full capacity anyway.</li>

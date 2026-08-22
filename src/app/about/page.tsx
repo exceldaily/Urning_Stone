@@ -32,13 +32,13 @@ export default function AboutPage() {
             <p>
               People arrive at this decision tired, often within days of a loss, and are met with catalogues written in
               procedural language, sizes given without explanation, and a great deal of imagery that has nothing to do
-              with the person they are thinking about. The decision itself is not complicated. The way it is usually
+              with the animal they are thinking about. The decision itself is not complicated. The way it is usually
               presented is.
             </p>
             <p>
               So we have tried to build the version we would want to use. Capacity explained plainly and shown on the
               same scale everywhere. Dimensions listed before you ask. Engraving you can preview and check. Policies
-              written in sentences rather than clauses. And a person to talk to when reading is not what you need.
+              written in sentences rather than clauses. And someone to talk to when reading is not what you need.
             </p>
             <p>
               We are careful about what we claim. Where we do not yet know something — a delivery window, a returns

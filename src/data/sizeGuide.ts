@@ -13,7 +13,7 @@ export interface SizeBand {
  * General planning guideline, stated plainly wherever capacity appears:
  * approximately 1 cubic inch of capacity per 1 pound of healthy body weight.
  * This is an estimate, not a guarantee, and should be confirmed with the
- * crematory or funeral provider.
+ * crematorium.
  */
 export const CAPACITY_RULE = 'Roughly one cubic inch of capacity for each pound your pet weighed.';
 export const CAPACITY_CAVEAT =

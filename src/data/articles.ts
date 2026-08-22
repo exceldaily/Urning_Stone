@@ -11,128 +11,139 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    slug: 'how-to-choose-the-right-urn-size',
-    title: 'How to choose the right urn size',
+    slug: 'what-size-urn-for-my-pet',
+    title: 'What size urn will I need?',
     standfirst: 'Capacity is the one thing worth getting right first. Everything else — material, shape, finish — is easier once you know the number you are looking for.',
     readingMinutes: 4,
-    published: '2026-02-04',
+    published: '2026-05-04',
     body: [
       {
         paragraphs: [
-          'Urn capacity is measured in cubic inches. The common planning guideline is that roughly one pound of healthy body weight needs about one cubic inch of space. Someone who weighed around 170 pounds would usually be well served by an urn of about 170 to 200 cubic inches.',
-          'This is an estimate rather than a rule. Bone density, height and the practices of the individual crematory all affect the final volume, so treat the number as a starting point and confirm it with the crematory or funeral provider if you can.',
+          'Urn capacity is measured in cubic inches, and the working guideline is simple: roughly one cubic inch of space for every pound your pet weighed. A cat of 12 lb is comfortably held by an urn of 15 to 20 cubic inches. A labrador of 70 lb wants something closer to 80.',
+          'This is an estimate rather than a rule. Breed, bone density and each crematorium’s practice all affect the final volume, so treat the number as a starting point and confirm it with them if you can.',
+        ],
+      },
+      {
+        heading: 'Use their healthy weight, not their last weight',
+        paragraphs: [
+          'This is the mistake we see most often. Illness and old age take weight off an animal without changing their frame, and it is the frame the estimate really follows. An old dog who dropped from 65 lb to 48 lb still needs an urn sized nearer the 65.',
+          'If you are not certain what they weighed in good health, your vet will almost always have it on file from an earlier visit.',
+        ],
+      },
+      {
+        heading: 'Long coats are misleading',
+        paragraphs: [
+          'A heavily coated animal looks considerably bigger than they weigh. If you are estimating by eye rather than from a number, you will usually guess high on a collie or a persian and low on a whippet. Where you can, use a real weight rather than an impression.',
         ],
       },
       {
         heading: 'When you are unsure, size up',
         paragraphs: [
-          'An urn with a little room to spare closes properly and is easier to fill without worry. An urn that is slightly too small cannot be used at all. If you are choosing between two capacities, the larger one is almost always the more comfortable decision.',
+          'An urn with a little room to spare closes properly and is easier to fill without worry. An urn that is slightly too small cannot be used at all, and finding that out with the ashes already in front of you is genuinely upsetting.',
+          'If you are choosing between two capacities, the larger one is almost always the more comfortable decision.',
         ],
       },
       {
-        heading: 'The sizes you are likely to see',
-        paragraphs: ['Most of the market sorts into five bands:'],
+        heading: 'A rough guide by animal',
+        paragraphs: ['As a starting point, before you check their actual weight:'],
         list: [
-          'Adult urns, usually 180 to 220 cubic inches.',
-          'Extra-large urns, 250 cubic inches and above, for larger adults.',
-          'Companion urns, 380 to 440 cubic inches, holding two people, often in separate compartments.',
-          'Keepsake urns, 1 to 20 cubic inches, holding a small portion.',
-          'Pet urns, sized by the animal\u2019s weight on the same one-pound-to-one-cubic-inch guide.',
+          'Rabbit, guinea pig or small bird — 10 to 15 cubic inches',
+          'Cat — 15 to 25 cubic inches',
+          'Small dog, up to 30 lb — 25 to 35 cubic inches',
+          'Medium dog, 30 to 60 lb — 35 to 65 cubic inches',
+          'Large dog, 60 to 100 lb — 65 to 105 cubic inches',
+          'Giant breed, over 100 lb — 105 cubic inches and above',
         ],
       },
       {
-        heading: 'If ashes will be divided',
+        heading: 'Check the outside as well as the inside',
         paragraphs: [
-          'Families often keep one main urn and share keepsakes among relatives. If that is your plan, choose the main urn at full capacity anyway. Keepsakes hold very little, and it is easier to fill them from a full urn than to discover later that the main vessel is short.',
-        ],
-      },
-      {
-        heading: 'A practical checklist',
-        paragraphs: ['Before ordering, it helps to know:'],
-        list: [
-          'The approximate healthy body weight of the person you are remembering.',
-          'Whether the ashes will be kept whole, divided, buried or scattered.',
-          'Where the urn will sit, and the height and depth of that space.',
-          'Whether a cemetery or columbarium has its own size limits — many do.',
+          'Capacity tells you what will fit inside. If the urn is going on a particular shelf, in a cabinet, or into a garden niche, check the exterior height, width and depth too — they are listed on every product page. A tall sculpted piece can hold less than a squat one twice its height suggests.',
         ],
       },
     ],
-    related: ['choosing-an-urn-that-feels-personal', 'understanding-keepsake-and-companion-urns'],
+    related: ['bringing-them-home', 'keepsakes-when-a-pet-belonged-to-everyone'],
   },
   {
-    slug: 'choosing-an-urn-that-feels-personal',
-    title: 'Choosing an urn that feels personal',
-    standfirst: 'There is no correct answer here, only a fitting one. A few questions tend to make the choice clearer.',
-    readingMinutes: 3,
-    published: '2026-02-18',
-    body: [
-      {
-        paragraphs: [
-          'People often arrive at this decision expecting to feel certain, and are unsettled when they do not. That is normal. You are choosing an object to stand in for a person, and no object will ever be equal to that. What an urn can do is feel right — recognisable, in keeping, unembarrassed.',
-        ],
-      },
-      {
-        heading: 'Start with the room, not the catalogue',
-        paragraphs: [
-          'Think about where it will actually live. A shelf among books, a mantel, a windowsill, a side table in a hallway. The materials already in that room — oak, brass, painted wood, ceramic — are a better guide than any product category.',
-        ],
-      },
-      {
-        heading: 'Think about what they used and liked',
-        paragraphs: [
-          'Someone who worked with their hands often suits wood. Someone precise and unfussy often suits plain geometry. Someone who gardened, walked or fished often suits ceramic, stone or a botanical motif. These are not rules, but they are a useful way in when the choice feels abstract.',
-        ],
-      },
-      {
-        heading: 'Words are optional',
-        paragraphs: [
-          'Engraving makes a piece specific, but a name and two dates can feel spare in a way some families find difficult. Others find it exactly right. A short line — something they said often, or a place that mattered — is a middle path. If you are unsure, plain is not a failure of effort; many families add engraving later.',
-        ],
-      },
-      {
-        heading: 'Give yourself permission to take a few days',
-        paragraphs: [
-          'Very few decisions in this process need to be made quickly. A crematory will normally hold ashes in a temporary container for some time. Ask them how long, then take the time you are given.',
-        ],
-      },
-    ],
-    related: ['how-to-choose-the-right-urn-size', 'understanding-keepsake-and-companion-urns'],
-  },
-  {
-    slug: 'understanding-keepsake-and-companion-urns',
-    title: 'Understanding keepsake and companion urns',
-    standfirst: 'Two words that come up constantly and are rarely explained. Here is what each one means in practice.',
+    slug: 'bringing-them-home',
+    title: 'Bringing them home',
+    standfirst: 'What actually happens when the ashes come back, and how to move them into an urn without making it harder than it needs to be.',
     readingMinutes: 4,
-    published: '2026-03-06',
+    published: '2026-05-12',
     body: [
       {
-        heading: 'Keepsake urns',
         paragraphs: [
-          'A keepsake urn holds a small portion of ashes rather than all of them — typically between 1 and 20 cubic inches. They exist because grief is rarely held in one place. Children who live in different cities, a sibling abroad, a parent who wants something small on a bedside table: keepsakes let several people keep something without anyone having to give anything up.',
-          'Most families choose a full-size urn as well, and fill the keepsakes from it. Dividing ashes is a straightforward practical task, and a funeral director will usually do it for you if you would rather not.',
+          'Most crematoriums return ashes in a sealed plastic bag inside a plain temporary container — often a rectangular tin or a cardboard box, sometimes with a paper label. It is not meant to be permanent, but there is nothing wrong with it, and no rule says you must move them at all, or move them soon.',
         ],
       },
       {
-        heading: 'Memorial jewelry',
+        heading: 'You do not have to open the bag',
         paragraphs: [
-          'Cremation pendants are keepsakes worn rather than displayed, holding a very small amount — often a fraction of a cubic inch. They usually arrive with a small funnel and a sealing adhesive. Fill them somewhere still, over a sheet of paper, without hurrying.',
+          'This is the part people worry about most, and it is the part that turns out to be easiest. In almost every case the sealed bag lifts straight out of the temporary container and drops into the urn as it is. You never have to see or handle the ashes themselves.',
+          'If the bag is slightly too large for the opening, it will usually settle if you ease it in rather than push. If it genuinely will not fit, the urn is too small — stop, and talk to us before doing anything else.',
         ],
       },
       {
-        heading: 'Companion urns',
+        heading: 'For keepsakes and keyrings',
         paragraphs: [
-          'A companion urn holds two people. Most have divided interiors with two sealed compartments, which matters because the two are rarely placed at the same time — often years apart. A divided design means the urn can be opened again without disturbing what is already inside.',
-          'Capacity is usually 380 to 440 cubic inches in total, roughly double an adult urn. Check whether the compartments are separate or shared before ordering, and check the dimensions against any cemetery niche you have in mind.',
+          'Smaller pieces work differently: you are taking a pinch rather than filling anything. Each one comes with a small funnel. Work over a sheet of paper so anything that misses can be tipped back, do it somewhere without a draught, and give yourself more time than you think you need.',
+          'There is no ceremony required. Plenty of people do this at the kitchen table on an ordinary afternoon, and that is a perfectly good way to do it.',
         ],
       },
       {
-        heading: 'Choosing between them',
+        heading: 'Sealing it, if you want to',
         paragraphs: [
-          'These are not competing options. A common arrangement is one main urn for the home, two or three keepsakes for family, and sometimes a small portion set aside for scattering somewhere that mattered. If that is your plan, tell us and we will help you work out the sizes.',
+          'Threaded lids and base plates seat firmly on their own and do not need anything more. If you would like the closure permanent — because it will be moved, or because you would rather not be able to open it — a thin bead of clear silicone adhesive around the seam is the usual approach.',
+          'Think about it before you do it. It is not easily undone, and some people find later that they wanted to add a collar tag or a lock of fur.',
+        ],
+      },
+      {
+        heading: 'Where it goes',
+        paragraphs: [
+          'There is no correct answer. Some families want the urn somewhere central; others find that too much at first and start it on a shelf in another room, moving it closer over months. Both are normal. You are allowed to change your mind, more than once.',
         ],
       },
     ],
-    related: ['how-to-choose-the-right-urn-size', 'choosing-an-urn-that-feels-personal'],
+    related: ['what-size-urn-for-my-pet', 'keepsakes-when-a-pet-belonged-to-everyone'],
+  },
+  {
+    slug: 'keepsakes-when-a-pet-belonged-to-everyone',
+    title: 'When a pet belonged to everyone',
+    standfirst: 'One animal, several households, and one urn that can only live in one of them. How families share a pet they all loved.',
+    readingMinutes: 3,
+    published: '2026-05-20',
+    body: [
+      {
+        paragraphs: [
+          'A dog who was there for fifteen years belonged to the children who have since moved out, and often to a partner who has since left. When the ashes come back, they come back to one address. That is a quietly difficult thing, and it comes up more often than people expect.',
+        ],
+      },
+      {
+        heading: 'Dividing ashes is normal',
+        paragraphs: [
+          'Ashes can be divided, and doing so is common and entirely ordinary. Your crematorium will usually divide them for you if you ask, which spares anyone the job. Many families keep one main urn at the family home and a keepsake each for the people who are not there.',
+        ],
+      },
+      {
+        heading: 'What a keepsake actually holds',
+        paragraphs: [
+          'Less than people imagine, and that is the point. A keepsake urn holds up to about 20 cubic inches; a keyring holds a pinch. They are not a smaller version of the urn — they are a token, deliberately, so that no one has to argue about who gets to keep them.',
+        ],
+      },
+      {
+        heading: 'Buy them together if you can',
+        paragraphs: [
+          'Matching pieces bought at the same time will match. Bought a year apart, glazes and finishes drift, particularly on hand-glazed ceramics where no two are identical to begin with. If you think several people will want one, it is worth asking them now rather than later.',
+        ],
+      },
+      {
+        heading: 'A note on children',
+        paragraphs: [
+          'Children often cope with a small object better than a large one, and better than being kept away from the subject entirely. A keyring they can hold, that goes in a pocket and comes out when they want it, tends to be easier than an urn on a high shelf they are told not to touch.',
+        ],
+      },
+    ],
+    related: ['what-size-urn-for-my-pet', 'bringing-them-home'],
   },
 ];
 

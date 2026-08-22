@@ -187,7 +187,7 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <p className="eyebrow">Size guide</p>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl">What size will you need?</h2>
-              <p className="mt-4 text-[1rem] leading-relaxed text-ink2">{CAPACITY_RULE} So a person of around 170 lb is usually well served by an urn of 170 to 200 cubic inches.</p>
+              <p className="mt-4 text-[1rem] leading-relaxed text-ink2">{CAPACITY_RULE} So a 40 lb spaniel is usually well served by an urn of 40 to 50 cubic inches. Use their healthy weight rather than their weight at the end.</p>
             </div>
           </Reveal>
           <Reveal delay={80}>

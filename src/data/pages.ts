@@ -167,30 +167,42 @@ export const docPages: DocPageContent[] = [
 
 export const getDocPage = (slug: string) => docPages.find((p) => p.slug === slug);
 
-/** Memorial planning resources — practical, non-commercial guidance. */
+/** Pet loss resources — practical, non-commercial guidance. */
 export const resourceGroups = [
   {
     heading: 'In the first days',
     items: [
-      { title: 'Ask the crematory how long they can hold the ashes', body: 'This is almost always longer than families expect, and it removes the pressure to choose an urn quickly.' },
-      { title: 'Ask for the approximate volume', body: 'Some crematories can tell you the volume in cubic inches, which removes the guesswork from sizing entirely.' },
-      { title: 'Check any niche or plot dimensions', body: 'Cemeteries and columbaria often set strict size limits. Measure before you choose.' },
+      { title: 'Ask the crematorium how long they can hold the ashes', body: 'This is almost always longer than families expect, and it removes the pressure to choose an urn quickly.' },
+      { title: 'Ask for the approximate volume', body: 'Some crematoriums can tell you the volume in cubic inches, which removes the guesswork from sizing entirely.' },
+      { title: 'Check whether the cremation was individual', body: 'Communal cremation means ashes are not returned to you. If you are expecting them back, confirm which service was arranged — this is worth checking early rather than discovering later.' },
+      { title: 'Keep the collar somewhere safe', body: 'People very often want the collar, tag or a lock of fur later, and just as often cannot find it. Put it somewhere deliberate now, even in a drawer.' },
     ],
   },
   {
     heading: 'Deciding together',
     items: [
       { title: 'Agree who the decision belongs to', body: 'Disagreement at this point is common and rarely about the urn. Naming one person to decide, with others consulted, tends to help.' },
-      { title: 'Consider dividing ashes', body: 'Keepsakes let several people keep something without anyone having to concede.' },
-      { title: 'Write down what was said', body: 'If the person expressed a wish, record it plainly somewhere the family can see. Memory of these conversations diverges quickly.' },
+      { title: 'Consider dividing the ashes', body: 'Keepsakes let several people keep something without anyone having to concede. Your crematorium will usually divide them for you.' },
+      { title: 'Say out loud who is keeping what', body: 'If more than one household shared the pet, agree it before the ashes come back. Memory of these conversations diverges quickly.' },
+      { title: 'Include children if they want to be', body: 'A small object they can hold is usually easier for a child than an urn on a high shelf they are told not to touch.' },
+    ],
+  },
+  {
+    heading: 'Grief that other people underestimate',
+    items: [
+      { title: 'It is not disproportionate', body: 'Pet grief is frequently dismissed, including by people who mean well. The relationship was daily, physical and years long, and losing it lands accordingly. You are not overreacting.' },
+      { title: 'Pet loss support exists', body: 'Several countries have dedicated pet bereavement helplines and counselling services, and many veterinary practices can refer you.', pending: true },
+      { title: 'Other pets notice', body: 'Animals left behind often change routine, appetite or sleep for a while. Your vet can advise if it does not settle.' },
+      { title: 'Anticipated loss counts too', body: 'If you are choosing an urn before the end, that is a normal and practical thing to do, and it is often easier than deciding afterwards.' },
     ],
   },
   {
     heading: 'Practical matters',
     items: [
       { title: 'Rules on scattering vary', body: 'Permission is often required on public land, and rules differ by country, state and waterway. Check before planning a date.', pending: true },
+      { title: 'Burying at home', body: 'Home burial of a pet is permitted in many places and restricted in others, with rules on depth and proximity to water. Check your local authority first.', pending: true },
       { title: 'Travelling with an urn', body: 'Airlines usually require an urn that can be screened, which rules out some metals and stone. Check with the airline in advance.', pending: true },
-      { title: 'Burial of a biodegradable urn', body: 'Green burial grounds have their own requirements for materials and depth. Confirm with the site first.', pending: true },
+      { title: 'Burial of a biodegradable urn', body: 'If you are planting a tree over them, choose the spot with some care — it is harder to move later than people expect.' },
     ],
   },
 ];

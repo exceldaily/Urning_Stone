@@ -5,8 +5,8 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { HelpPrompt } from '@/components/ui/HelpPrompt';
 
 export const metadata: Metadata = {
-  title: 'Memorial planning resources',
-  description: 'Practical guidance for the days after a loss: what to ask the crematory, how families usually decide, and the rules that affect scattering, travel and burial.',
+  title: 'Pet loss resources',
+  description: 'Practical guidance for the days after losing a pet: what to ask the crematorium, how families usually decide, and where to find support that takes pet grief seriously.',
   alternates: { canonical: '/resources' },
 };
 
